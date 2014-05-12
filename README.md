@@ -27,16 +27,22 @@ ProxyUser.listPendingUsers().then(...);
 ProxyUser.findUser(username).then(...);
 
 // Instance method: get the user's role
-user.getRole();
-// => 'user'
+ProxyUser.findUser(username)
+    .then(function(user){
+      console.log("User's role: ", user.getRole());
+    });
 
 // Instance method: does the user have admin privleges
-user.isAdmin();
-// => true
+ProxyUser.findUser(username)
+    .then(function(user){
+      console.log("Is Admin?: ", user.isAdmin());
+    });
 
 // Instance method: authenticate the user's password
-user.authenticate(password);
-// => true
+ProxyUser.findUser(username)
+    .then(function(user){
+      console.log("Good password?: ", user.authenticate(password));
+    });
 ```
 
 ## License
