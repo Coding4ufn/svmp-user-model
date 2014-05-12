@@ -1,0 +1,28 @@
+{
+  "name": "svmp-shared-js",
+  "description": "SVMP common node code",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "url": "https://github.com/SVMP/svmp-user-model",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SVMP/svmp-user-model.git"
+  },
+  "private": true,
+  "author": "Dave Bryson",
+  "engines": {
+    "node": "0.10.2",
+    "npm": "1.2"
+  },
+  "dependencies": {
+    "mongoose": "latest"
+  },
+  "devDependencies": {
+    "should": "~3.2.0",
+    "grunt": "latest",
+    "grunt-mocha-test": "latest",
+    "grunt-exec": "latest",
+    "mocha": "latest",
+    "grunt-jsdoc": "~0.5.4"
+  }
+}
