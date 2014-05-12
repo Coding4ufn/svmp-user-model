@@ -1,6 +1,6 @@
 # svmp-user-model
 
-  User Model for SVMP proxy and Web console
+  User Model for SVMP proxy and Web console.  Mongoose code with some additional helpers.
 
 
 ## Example
