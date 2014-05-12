@@ -27,9 +27,7 @@ module.exports = ProxyModel();
 
 /**
  *  Define the ProxyUser functionality and Schema.
- *  To use in code:
- *  var ProxyUser = require('proxyusers');
- *  See 'tests' and README for examples
+ *  
  */
 function ProxyModel() {
 
