@@ -3,7 +3,18 @@
   User Model for SVMP proxy and Web console.  Mongoose code with some additional helpers.
 
 
-## Example
+## Use
+
+Add as a dependency to package.json
+
+```js
+"dependencies": {
+    "svmp-user-model": "git+https://github.com/SVMP/svmp-user-model.git",
+        ...
+}
+```
+
+Require as usual, and use as you would a normal Mongoose Model
 
 ```js
 // require the module
