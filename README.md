@@ -8,41 +8,6 @@
 ```js
 // require the module
 var ProxyUser = require('svmp-user-model');
-
-// Static: List all Users. Returns a promise
-ProxyUser.listAllUsers()
-    .then(function(results) {
-       console.log("The users: ", results);
-    }, function(err) {
-       console.log("Error: ", err);
-    });;
-
-// Static: List all approved Users
-ProxyUser.listApprovedUsers().then(...);
-
-// Static: List all pending Users
-ProxyUser.listPendingUsers().then(...);
-
-// Static: Find a user by username
-ProxyUser.findUser(username).then(...);
-
-// Instance method: get the user's role
-ProxyUser.findUser(username)
-    .then(function(user){
-      console.log("User's role: ", user.getRole());
-    });
-
-// Instance method: does the user have admin privleges
-ProxyUser.findUser(username)
-    .then(function(user){
-      console.log("Is Admin?: ", user.isAdmin());
-    });
-
-// Instance method: authenticate the user's password
-ProxyUser.findUser(username)
-    .then(function(user){
-      console.log("Good password?: ", user.authenticate(password));
-    });
 ```
 
 ## License

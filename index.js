@@ -56,6 +56,11 @@ function ProxyModel() {
             default: '',
             validate: [validatePassword, 'Password should be at least 8 characters']
         },
+        // Optional, true if user needs to reset password
+        password_change_needed: {
+            type: Boolean,
+            default: false
+        },
         // Salt used by password
         salt: {
             type: String
@@ -145,39 +150,6 @@ function ProxyModel() {
         }
         next();
     });
-
-    /**
-     * List all Users
-     * @returns {Promise}
-     */
-    ProxyUserSchema.statics.listAllUsers = function () {
-        return this.find({}).exec();
-    };
-
-    /**
-     * List approved Users
-     * @returns {Promise}
-     */
-    ProxyUserSchema.statics.listApprovedUsers = function () {
-        return this.find({approved: true}).exec();
-    };
-
-    /**
-     * List Pending Users
-     * @returns {Promise}
-     */
-    ProxyUserSchema.statics.listPendingUsers = function () {
-        return this.find({approved: false}).exec();
-    };
-
-    /**
-     * Find a User by Username
-     * @param username
-     * @returns {Promise}
-     */
-    ProxyUserSchema.statics.findUser = function (username) {
-        return this.findOne({username: username}).exec();
-    };
 
     /**
      * Get the User's role

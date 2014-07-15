@@ -59,14 +59,14 @@ describe('ProxyUser Tests:', function () {
 
     describe('Read Users', function () {
         it('should have 2 users', function (done) {
-            return ProxyUser.listAllUsers().then(function (r) {
+            return ProxyUser.find({}).exec().then(function (r) {
                 r.length.should.be.exactly(2);
                 done();
             });
         });
 
         it('should be 1 approved user', function (done) {
-            return ProxyUser.listApprovedUsers()
+            return ProxyUser.find({approved: true}).exec()
                 .then(function (r) {
                     r.length.should.be.exactly(1);
                     done();
@@ -74,7 +74,7 @@ describe('ProxyUser Tests:', function () {
         });
 
         it('should be 1 pending users', function (done) {
-            return ProxyUser.listPendingUsers()
+            return ProxyUser.find({approved: false}).exec()
                 .then(function (r) {
                     r.length.should.be.exactly(1);
                     done();
@@ -82,7 +82,7 @@ describe('ProxyUser Tests:', function () {
         });
 
         it('should find user by username', function (done) {
-            return ProxyUser.findUser('bob').then(function (r) {
+            return ProxyUser.findOne({username: 'bob'}).exec().then(function (r) {
                 r.email.should.equal('bob@here.com');
                 done();
             })
@@ -134,14 +134,14 @@ describe('ProxyUser Tests:', function () {
 
     describe('Authentication', function () {
         it('should authenticate a valid user', function (done) {
-            return ProxyUser.findUser('bob').then(function (u) {
+            return ProxyUser.findOne({username: 'bob'}).exec().then(function (u) {
                 u.authenticate('bobbobbob').should.be.true;
                 done();
             });
         });
 
         it('should fail authentication on bad password', function (done) {
-            return ProxyUser.findUser('bob').then(function (u) {
+            return ProxyUser.findOne({username: 'bob'}).exec().then(function (u) {
                 u.authenticate('aaaaaaa').should.be.false;
                 done();
             })
@@ -150,7 +150,7 @@ describe('ProxyUser Tests:', function () {
 
     describe('Check User role', function () {
         it('should get user role', function (done) {
-            return ProxyUser.findUser('bob').then(function (u) {
+            return ProxyUser.findOne({username: 'bob'}).exec().then(function (u) {
                 u.getRole().should.be.equal('user');
                 u.isAdmin().should.be.false;
                 done();
@@ -158,7 +158,7 @@ describe('ProxyUser Tests:', function () {
         });
 
         it('should handle isAdmin()', function(done) {
-           return ProxyUser.findUser('carl').then(function(u){
+           return ProxyUser.findOne({username: 'carl'}).exec().then(function(u){
                u.isAdmin().should.be.true;
                done();
            });
