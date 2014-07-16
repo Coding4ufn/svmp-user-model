@@ -17,8 +17,9 @@ Add as a dependency to package.json
 Require as usual, and use as you would a normal Mongoose Model
 
 ```js
-// require the module
-var ProxyUser = require('svmp-user-model');
+var 
+   mongoose = require('mongoose'),
+   ProxyUser = require('svmp-user-model')(mongoose);
 ```
 
 ## License
