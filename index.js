@@ -19,18 +19,17 @@
 'use strict';
 
 var
-    mongoose = require('mongoose'),
-    crypto = require('crypto'),
-    Schema = mongoose.Schema;
+    crypto = require('crypto');
 
-module.exports = ProxyModel();
+module.exports = ProxyModel;
 
 /**
  *  Define the ProxyUser functionality and Schema.
  *  
  */
-function ProxyModel() {
+function ProxyModel(mongoose) {
 
+    var Schema = mongoose.Schema;
     // Validation helpers
 
     var validateNotEmpty = function (property) {

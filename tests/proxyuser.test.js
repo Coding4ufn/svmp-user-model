@@ -25,7 +25,7 @@ var should = require('should'),
     mongoose = require('mongoose');
 
 // Load User
-var ProxyUser = require('..');
+var ProxyUser = require('..')(mongoose);
 
 describe('ProxyUser Tests:', function () {
 
