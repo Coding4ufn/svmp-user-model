@@ -37,7 +37,7 @@ function ProxyModel(mongoose) {
     };
 
     var validatePassword = function (pwd) {
-        return pwd && pwd.length > 8;
+        return pwd && pwd.length >= 8;
     };
 
     // Schema definition
@@ -140,10 +140,8 @@ function ProxyModel(mongoose) {
     ProxyUserSchema.pre('save', function (next) {
         var that = this;
 
-        if (!that.isModified('password'))
-            return next();
-
-        if (that.password && that.password.length > 6) {
+        if (that.isModified('password')) {
+            // validated by validatePassword function
             that.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
             that.password = that.hashPassword(that.password);
         }
